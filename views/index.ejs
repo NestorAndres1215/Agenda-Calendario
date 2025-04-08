@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agenda con Calendario</title>
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Agenda con Calendario</h1>
+    <p class="header-subtitle">Organiza tus eventos de manera eficiente</p>
+  </header>
+  
+  <div class="container">
+    <div class="controls">
+      <div class="btn-group">
+        <button id="btnAgregarEvento" class="btn btn-primary">
+          <i class="fas fa-plus"></i> Registrar Evento
+        </button>
+      </div>
+      <div class="status-indicator">
+        <p id="lastUpdated">Última actualización: <span id="updateTime"></span></p>
+      </div>
+    </div>
+    
+    <div class="calendar-container">
+      <div id="calendar"></div>
+    </div>
+  </div>
+  
+  <!-- Modal para Agregar/Editar Evento -->
+  <div id="eventoModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modalTitle">Registrar Evento</h2>
+        <button class="close-modal" id="closeModal">&times;</button>
+      </div>
+      <form id="eventoForm">
+        <input type="hidden" id="eventId">
+        <div class="form-group">
+          <label for="eventTitle">Título del Evento</label>
+          <input type="text" id="eventTitle" class="form-control" placeholder="Ingresa un título" required>
+        </div>
+        <div class="form-group">
+          <label for="eventStart">Fecha de Inicio</label>
+          <input type="date" id="eventStart" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="eventEnd">Fecha de Fin</label>
+          <input type="date" id="eventEnd" class="form-control" required>
+        </div>
+        <div class="form-actions">
+          <button type="button" class="btn btn-secondary" id="cancelarBtn">Cancelar</button>
+          <button type="submit" class="btn btn-success" id="guardarBtn">Guardar</button>
+        </div>
+      </form>
+      
+      <!-- Acciones de Evento (visible solo para edición) -->
+      <div id="eventActions" class="event-actions" style="display: none;">
+        <button type="button" class="btn btn-danger" id="eliminarBtn">
+          <i class="fas fa-trash"></i> Eliminar Evento
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal para ver detalles del evento -->
+  <div id="detalleEventoModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="detalleModalTitle">Detalles del Evento</h2>
+        <button class="close-modal" id="closeDetalleModal">&times;</button>
+      </div>
+      <div id="eventoDetalles">
+        <p><strong>Título:</strong> <span id="detalleTitulo"></span></p>
+        <p><strong>Inicio:</strong> <span id="detalleInicio"></span></p>
+        <p><strong>Fin:</strong> <span id="detalleFin"></span></p>
+      </div>
+      <div class="form-actions">
+        <button type="button" class="btn btn-secondary" id="cerrarDetalleBtn">Cerrar</button>
+        <button type="button" class="btn btn-primary" id="editarEventoBtn">Editar</button>
+        <button type="button" class="btn btn-danger" id="eliminarEventoBtn">Eliminar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script de FullCalendar -->
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+  
+  <!-- Axios -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <script src="js/script.js">
+
+  </script>
+</body>
+</html>
